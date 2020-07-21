@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">宠爱</string>
+    <string name="notifyTitle">提示</string>
+    <string name="notifyMsg">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。</string>
+    <string name="setting">设置</string>
+    <string name="carry">确认</string>
+    <string name="cancel">取消</string>
+    <string name="main_set">再按一次退出</string>
+
+    <!-- tabbar -->
+    <string name="tab1">宠物</string>
+    <string name="tab2">附近</string>
+    <string name="tab3">消息</string>
+    <string name="tab4">我的</string>
+
+
+    <!-- start_page -->
+    <string name="over">跳过</string>
+
+    <!-- home -->
+    <string name="search">搜索结果</string>
+    <string name="item1">排行榜</string>
+    <string name="item2">推荐专辑</string>
+    <string name="item3">热门歌星</string>
+    <string name="item3s">歌星</string>
+    <string name="item4">随便听听</string>
+    <string name="more">更多</string>
+    <string name="artist">歌星</string>
+
+
+    <!-- search -->
+    <string name="history">历史搜索</string>
+    <string name="delhistory">大家都在搜</string>
+    <string name="sear1">线路一</string>
+    <string name="sear2">线路二</string>
+    <string name="sear">线路选择</string>
+</resources>
