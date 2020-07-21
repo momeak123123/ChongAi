@@ -1,8 +1,10 @@
 package com.example.chongai.app.app.contract
 
+import android.content.Context
+import com.example.chongai.app.bean.Nav
+import mvp.ljb.kt.contract.IModelContract
 import mvp.ljb.kt.contract.IPresenterContract
 import mvp.ljb.kt.contract.IViewContract
-import mvp.ljb.kt.contract.IModelContract
 
 /**
  * @Author Kotlin MVP Plugin
@@ -11,9 +13,17 @@ import mvp.ljb.kt.contract.IModelContract
  **/
 interface HomeContract {
 
-    interface IView : IViewContract
+    interface IView : IViewContract {
 
-    interface IPresenter : IPresenterContract
+    }
 
-    interface IModel : IModelContract
+    interface IPresenter : IPresenterContract {
+        fun banner(context: Context): MutableList<String>
+        fun tran(context: Context): MutableList<Nav>
+    }
+
+    interface IModel : IModelContract{
+        fun banner(context: Context): MutableList<String>
+        fun tran(context: Context): MutableList<Nav>
+    }
 }

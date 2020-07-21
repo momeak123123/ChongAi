@@ -1,5 +1,6 @@
 package com.example.chongai.app.app.view.fragment
 
+import com.example.chongai.app.R
 import com.example.chongai.app.app.contract.NearbyContract
 import com.example.chongai.app.app.presenter.NearbyPresenter
 import mvp.ljb.kt.fragment.BaseMvpFragment
@@ -14,6 +15,6 @@ class NearbyFragment : BaseMvpFragment<NearbyContract.IPresenter>(), NearbyContr
     override fun registerPresenter() = NearbyPresenter::class.java
 
     override fun getLayoutId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return R.layout.fragment_nearby
     }
 }

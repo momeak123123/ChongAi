@@ -7,13 +7,13 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -23,7 +23,8 @@ import com.example.chongai.app.app.view.fragment.MyFragment
 import com.example.chongai.app.app.view.fragment.NearbyFragment
 import com.next.easynavigation.view.EasyNavigationBar
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.ArrayList
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -71,9 +72,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         context = this
+
         initView()
+
     }
 
     private fun initView(){
@@ -94,8 +98,8 @@ class MainActivity : AppCompatActivity() {
             .iconSize(20f) //Tab图标大小
             .tabTextSize(10) //Tab文字大小
             .tabTextTop(5) //Tab文字距Tab图标的距离
-            .normalTextColor(Color.parseColor("#9dadb4")) //Tab未选中时字体颜色
-            .selectTextColor(Color.parseColor("#06b7ff")) //Tab选中时字体颜色
+            .normalTextColor(Color.parseColor("#bdc3d0")) //Tab未选中时字体颜色
+            .selectTextColor(Color.parseColor("#71a0ff")) //Tab选中时字体颜色
             .scaleType(ImageView.ScaleType.CENTER_INSIDE) //同 ImageView的ScaleType
             .navigationBackground(Color.parseColor("#ffffff")) //导航栏背景色
             .mode(EasyNavigationBar.NavigationMode.MODE_ADD)
@@ -115,15 +119,14 @@ class MainActivity : AppCompatActivity() {
             .smoothScroll(true) //点击Tab  Viewpager切换是否有动画
             .canScroll(true) //Viewpager能否左右滑动
             .centerImageRes(R.drawable.add_image)
-            .centerIconSize(36F)    //中间加号图片的大小
+            .centerIconSize(40F)    //中间加号图片的大小
             .centerLayoutHeight(100)   //包含加号的布局高度 背景透明  所以加号看起来突出一块
             .navigationHeight(60)  //导航栏高度
-            .lineHeight(10)         //分割线高度  默认1px
-            .lineColor(Color.parseColor("#ff0000"))
+            .lineColor(Color.parseColor("#ffffff"))
             .centerLayoutRule(EasyNavigationBar.RULE_BOTTOM) //RULE_CENTER 加号居中addLayoutHeight调节位置 EasyNavigationBar.RULE_BOTTOM 加号在导航栏靠下
             .centerLayoutBottomMargin(10)   //加号到底部的距离
             .hasPadding(true)    //true ViewPager布局在导航栏之上 false有重叠
-            .centerAlignBottom(false) //加号是否同Tab文字底部对齐  RULE_BOTTOM时有效；
+            .centerAlignBottom(true) //加号是否同Tab文字底部对齐  RULE_BOTTOM时有效；
             .textSizeType(EasyNavigationBar.TextSizeType.TYPE_DP) //字体单位 建议使用DP  可切换SP
             .setOnCenterTabClickListener {
 

@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.chongai.app"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -50,7 +50,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-
     //mvp
     implementation 'com.github.cn-ljb:kotlin-mvp-lib:1.2.1'
     implementation 'com.github.cn-ljb:netlib:1.0.1'
@@ -81,13 +80,9 @@ dependencies {
     //二维码
     implementation 'com.google.zxing:core:3.4.0'
 
-
-    //金刚区
-    implementation 'com.github.zaaach:TransformersLayout:1.0.5'
-
     //城市选择
-    implementation 'com.zaaach:citypicker:2.0.3'	//必选
-    implementation 'com.android.support:recyclerview-v7:29.0.3'	//必选
+    implementation 'com.zaaach:citypicker:2.0.3'    //必选
+    implementation 'com.android.support:recyclerview-v7:29.0.3'    //必选
 
     //卡片布局
     implementation 'org.linwg1988:lcardview-kt:0.0.1'
@@ -97,6 +92,10 @@ dependencies {
 
     //底部tabbar
     implementation 'com.github.Vincent7Wong:EasyNavigation:2.0.5'
+
+    //banner
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'cn.bingoogolapple:bga-banner:3.0.0'
 
 }
 

@@ -1,5 +1,6 @@
 package com.example.chongai.app.app.view.fragment
 
+import com.example.chongai.app.R
 import com.example.chongai.app.app.contract.MessContract
 import com.example.chongai.app.app.presenter.MessPresenter
 import mvp.ljb.kt.fragment.BaseMvpFragment
@@ -14,6 +15,6 @@ class MessFragment : BaseMvpFragment<MessContract.IPresenter>(), MessContract.IV
     override fun registerPresenter() = MessPresenter::class.java
 
     override fun getLayoutId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return R.layout.fragment_mess
     }
 }

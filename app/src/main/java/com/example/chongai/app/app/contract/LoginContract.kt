@@ -1,8 +1,8 @@
 package com.example.chongai.app.app.contract
 
+import mvp.ljb.kt.contract.IModelContract
 import mvp.ljb.kt.contract.IPresenterContract
 import mvp.ljb.kt.contract.IViewContract
-import mvp.ljb.kt.contract.IModelContract
 
 /**
  * @Author Kotlin MVP Plugin
@@ -11,7 +11,8 @@ import mvp.ljb.kt.contract.IModelContract
  **/
 interface LoginContract {
 
-    interface IView : IViewContract
+    interface IView : IViewContract {
+    }
 
     interface IPresenter : IPresenterContract
 
