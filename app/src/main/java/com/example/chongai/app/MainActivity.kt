@@ -17,10 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.chongai.app.app.view.fragment.HomeFragment
-import com.example.chongai.app.app.view.fragment.MessFragment
-import com.example.chongai.app.app.view.fragment.MyFragment
-import com.example.chongai.app.app.view.fragment.NearbyFragment
+import com.example.chongai.app.app.view.fragment.*
 import com.next.easynavigation.view.EasyNavigationBar
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -86,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         val tab3 = getString(R.string.tab3)
         val tab4 = getString(R.string.tab4)
         val tabText = arrayOf(tab1, tab2, tab3, tab4)
-        fragments.add(HomeFragment())
+        fragments.add(RecommendFragment())
         fragments.add(NearbyFragment())
         fragments.add(MessFragment())
         fragments.add(MyFragment())

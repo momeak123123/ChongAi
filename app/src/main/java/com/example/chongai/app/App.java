@@ -11,6 +11,7 @@ import com.lzy.okgo.cookie.CookieJarImpl;
 import com.lzy.okgo.cookie.store.SPCookieStore;
 import com.lzy.okgo.https.HttpsUtils;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
+import com.xuexiang.xui.XUI;
 
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -33,6 +34,8 @@ public class App extends Application {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                XUI.init((Application) mContext); //初始化UI框架
+                XUI.debug(false);  //开启UI框架调试日志
                 UpdateAppUtils.init(mContext);
                 OkGo.getInstance().init(App.this);//网络请求
                 initOkGo();
@@ -48,8 +51,9 @@ public class App extends Application {
             }
         });
 
-
     }
+
+
 
     public static int network() {
         return NetWorkUtils.getCurrentNetworkType(mContext);

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<www.linwg.org.lib.LCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:bindLifeCircle="true"
+    app:useShadowPool="true"
+    app:cornerRadius="@dimen/dp_20">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.xuexiang.xui.widget.imageview.RadiusImageView
+            android:id="@+id/ima"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/placeholder_big"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="@dimen/dp_20"
+            app:riv_is_circle="false" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ima"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_20"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="发射东方红上帝发誓对手的覅登上飞机的设计覅撒旦解放"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_18" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <com.xuexiang.xui.widget.imageview.RadiusImageView
+                android:id="@+id/petimg"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:src="@drawable/placeholder"
+                android:layout_marginStart="@dimen/dp_20"
+                app:riv_is_circle="true" />
+
+            <TextView
+                android:id="@+id/petname"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_weight="1"
+                android:gravity="left|center"
+                android:text="名称"
+                android:textColor="@color/black"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/like"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center"
+                android:layout_marginEnd="@dimen/dp_20"
+                android:text="100万赞"
+                android:textColor="@color/black"
+                tools:ignore="RtlHardcoded" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+
+</www.linwg.org.lib.LCardView>
