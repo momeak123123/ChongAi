@@ -90,10 +90,6 @@
         <item>120</item>
     </string-array>
 
-    <string-array name="menu_values">
-        <item>@string/sear1</item>
-        <item>@string/sear2</item>
-    </string-array>
 
     <string-array name="router_choice_entry">
         <item>路线一: 南京->上海->杭州</item>

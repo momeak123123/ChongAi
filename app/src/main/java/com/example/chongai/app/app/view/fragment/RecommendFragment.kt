@@ -1,5 +1,6 @@
 package com.example.chongai.app.app.view.fragment
 
+import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,8 +10,10 @@ import com.example.chongai.app.R
 import com.example.chongai.app.adapter.RecommendAdapter
 import com.example.chongai.app.app.contract.RecommendContract
 import com.example.chongai.app.app.presenter.RecommendPresenter
+import com.example.chongai.app.app.view.act.DynamicActivity
 import com.example.chongai.app.bean.CustomBean
 import com.example.chongai.app.bean.Dynamic
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.home_recommend.*
 import mvp.ljb.kt.fragment.BaseMvpFragment
 
@@ -34,12 +37,12 @@ class RecommendFragment : BaseMvpFragment<RecommendContract.IPresenter>(), Recom
         loadData()
     }
 
-    fun loadData(){
+    fun loadData() {
         val data = context?.let { getPresenter().banner(it) }
         val list = context?.let { getPresenter().list(it) }
         if (data != null) {
             if (list != null) {
-                initSongList(list,data)
+                initSongList(list, data)
                 if (swipe_refresh_layout != null) {
                     swipe_refresh_layout.isRefreshing = false
                 }
@@ -58,19 +61,22 @@ class RecommendFragment : BaseMvpFragment<RecommendContract.IPresenter>(), Recom
     /**
      * 初始化列表
      */
-    private fun initSongList(list: MutableList<Dynamic>, data:MutableList<String>) {
+    private fun initSongList(list: MutableList<Dynamic>, data: MutableList<String>) {
         val layoutManager = LinearLayoutManager(requireContext())
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyc_item.isNestedScrollingEnabled = false
         recyc_item.layoutManager = layoutManager
         recyc_item.itemAnimator = DefaultItemAnimator()
         recyc_item.setHasFixedSize(true)
-        val adapter = RecommendAdapter(list,requireContext(),data)
+        val adapter = RecommendAdapter(list, requireContext(), data)
         recyc_item.adapter = adapter
         adapter.setOnItemClickListener(object : RecommendAdapter.ItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 if (position > 0) {
-
+                    val intent = Intent()
+                    intent.setClass(requireContext(), DynamicActivity().javaClass)
+                    intent.putExtra("dynamic", list[position])
+                    startActivity(intent)
                 }
 
             }

@@ -38,6 +38,8 @@ import mvp.ljb.kt.act.BaseMvpActivity
  **/
 class DynamicActivity : BaseMvpActivity<DynamicContract.IPresenter>() , DynamicContract.IView {
 
+    private lateinit var data: Dynamic
+
     companion object {
         lateinit var observer: Observer<Boolean>
     }
@@ -50,7 +52,8 @@ class DynamicActivity : BaseMvpActivity<DynamicContract.IPresenter>() , DynamicC
 
     override fun init(savedInstanceState: Bundle?) {
         super.init(savedInstanceState)
-
+        val bundle = intent.extras
+        data = bundle?.get("dynamic") as Dynamic
     }
 
     override fun initData() {
@@ -84,7 +87,7 @@ class DynamicActivity : BaseMvpActivity<DynamicContract.IPresenter>() , DynamicC
     /**
      * 初始化列表
      */
-    private fun initSongList(list: MutableList<Comment>, data:Dynamic) {
+    private fun initSongList(list: MutableList<Comment>) {
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyc_item.isNestedScrollingEnabled = false
