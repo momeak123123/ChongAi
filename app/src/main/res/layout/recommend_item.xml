@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.xuexiang.xui.widget.imageview.RadiusImageView
+        <com.shehuan.niv.NiceImageView
             android:id="@+id/ima"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,8 +22,8 @@
             android:layout_alignParentEnd="true"
             android:src="@drawable/placeholder_big"
             android:scaleType="centerCrop"
-            app:riv_corner_radius="@dimen/dp_20"
-            app:riv_is_circle="false" />
+            app:corner_radius="@dimen/dp_20"
+            app:is_circle="false" />
 
         <TextView
             android:id="@+id/title"
@@ -53,13 +53,14 @@
             android:layout_marginBottom="@dimen/dp_10"
             android:orientation="horizontal">
 
-            <com.xuexiang.xui.widget.imageview.RadiusImageView
+
+            <com.shehuan.niv.NiceImageView
                 android:id="@+id/petimg"
                 android:layout_width="@dimen/dp_40"
                 android:layout_height="@dimen/dp_40"
                 android:src="@drawable/placeholder"
                 android:layout_marginStart="@dimen/dp_20"
-                app:riv_is_circle="true" />
+                app:is_circle="true" />
 
             <TextView
                 android:id="@+id/petname"
@@ -68,6 +69,7 @@
                 android:layout_marginStart="@dimen/dp_10"
                 android:layout_weight="1"
                 android:gravity="left|center"
+                android:textSize="@dimen/sp_14"
                 android:text="名称"
                 android:textColor="@color/black"
                 tools:ignore="RtlHardcoded" />
@@ -76,10 +78,10 @@
                 android:id="@+id/like"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:gravity="right|center"
                 android:layout_marginEnd="@dimen/dp_20"
                 android:text="100万赞"
+                android:textSize="@dimen/sp_14"
                 android:textColor="@color/black"
                 tools:ignore="RtlHardcoded" />
 

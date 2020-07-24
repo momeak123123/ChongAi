@@ -2,24 +2,27 @@ package com.example.chongai.app.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.chongai.app.R
-import com.example.chongai.app.bean.Recommend
-import com.xuexiang.xui.widget.banner.widget.banner.BannerItem
-import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner
-import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner
-import com.xuexiang.xui.widget.imageview.RadiusImageView
+import com.example.chongai.app.bean.CustomBean
+import com.example.chongai.app.bean.Dynamic
+import com.example.chongai.app.holder.NetViewHolder
+import com.shehuan.niv.NiceImageView
+import com.zhpan.bannerview.BannerViewPager
+import com.zhpan.bannerview.utils.BannerUtils
+
 
 class RecommendAdapter(
-    val datas: MutableList<Recommend>,
+    val datas: MutableList<Dynamic>,
     val context: Context,
-    val data:MutableList<BannerItem>
+    val data:MutableList<String>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -45,13 +48,13 @@ class RecommendAdapter(
         //加载View
         return when (position) {
             TYPE_TITLE -> TitleHolder(
-                LayoutInflater.from(context).inflate(R.layout.home_header, holder, false)
+                LayoutInflater.from(context).inflate(R.layout.recommend_header, holder, false)
             )
             TYPE_SELLER -> SellerHolder(
-                LayoutInflater.from(context).inflate(R.layout.home_item, holder, false)
+                LayoutInflater.from(context).inflate(R.layout.recommend_item, holder, false)
             )
             else -> TitleHolder(
-                LayoutInflater.from(context).inflate(R.layout.home_header, holder, false)
+                LayoutInflater.from(context).inflate(R.layout.recommend_header, holder, false)
             )
         }
 
@@ -71,6 +74,7 @@ class RecommendAdapter(
      * 绑定数据，View和数据绑定
      */
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position < datas.size) {
             when (getItemViewType(position)) {
@@ -85,31 +89,30 @@ class RecommendAdapter(
 
 
     inner class TitleHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private var mViewPager: BannerViewPager<String, NetViewHolder> = itemView.findViewById(R.id.banner_view)
 
-        private var mContentBanner: SimpleImageBanner = itemView.findViewById(R.id.mContentBanner)
-
+        @RequiresApi(Build.VERSION_CODES.M)
         fun bindData() {
 
-            mContentBanner.setSource(data)
-                .setOnItemClickListener(BaseBanner.OnItemClickListener<BannerItem?> { _, _, position ->
-                    Toast.makeText(
-                        context,
-                        "点击了$position",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                })
-                .setIsOnePageLoop(false).startScroll()
+            mViewPager
+                .setAdapter(BannerAdapter())
+                .setPageMargin(context.resources.getDimension(R.dimen.dp_10).toInt())
+                .setRevealWidth(BannerUtils.dp2px(0f))
+                .setOnPageClickListener { position: Int ->
 
+                }
+                .setInterval(5000).create(data)
+            mViewPager.removeDefaultPageTransformer()
 
         }
 
     }
 
     inner class SellerHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var ima: RadiusImageView = itemView.findViewById(R.id.ima)
+        private var ima: NiceImageView = itemView.findViewById(R.id.ima)
         private var title: TextView = itemView.findViewById(R.id.title)
         private var petname: TextView = itemView.findViewById(R.id.petname)
-        private var petimg: RadiusImageView = itemView.findViewById(R.id.petimg)
+        private var petimg: NiceImageView = itemView.findViewById(R.id.petimg)
         private var like: TextView = itemView.findViewById(R.id.like)
 
         @SuppressLint("ResourceAsColor", "SetTextI18n")

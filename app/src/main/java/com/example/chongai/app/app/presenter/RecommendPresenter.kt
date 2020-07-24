@@ -1,11 +1,11 @@
 package com.example.chongai.app.app.presenter
 
 import android.content.Context
-import mvp.ljb.kt.presenter.BaseMvpPresenter
 import com.example.chongai.app.app.contract.RecommendContract
 import com.example.chongai.app.app.model.RecommendModel
-import com.example.chongai.app.bean.Recommend
-import com.xuexiang.xui.widget.banner.widget.banner.BannerItem
+import com.example.chongai.app.bean.CustomBean
+import com.example.chongai.app.bean.Dynamic
+import mvp.ljb.kt.presenter.BaseMvpPresenter
 
 /**
  * @Author Kotlin MVP Plugin
@@ -16,11 +16,11 @@ class RecommendPresenter : BaseMvpPresenter<RecommendContract.IView, RecommendCo
 
     override fun registerModel() = RecommendModel::class.java
 
-    override fun banner(context: Context): MutableList<BannerItem> {
+    override fun banner(context: Context): MutableList<String> {
         return getModel().banner(context)
     }
 
-    override fun list(context: Context): MutableList<Recommend> {
+    override fun list(context: Context): MutableList<Dynamic> {
         return getModel().list(context)
     }
 }

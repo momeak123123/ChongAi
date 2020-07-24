@@ -1,18 +1,19 @@
 package com.example.chongai.app.app.view.fragment
 
-import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.bumptech.glide.request.RequestOptions
 import com.example.chongai.app.R
-import com.example.chongai.app.adapter.HomeAdapter
 import com.example.chongai.app.adapter.RecommendAdapter
 import com.example.chongai.app.app.contract.RecommendContract
 import com.example.chongai.app.app.presenter.RecommendPresenter
-import com.example.chongai.app.bean.Recommend
-import com.xuexiang.xui.widget.banner.widget.banner.BannerItem
-import kotlinx.android.synthetic.main.fragment_recommend.*
+import com.example.chongai.app.bean.CustomBean
+import com.example.chongai.app.bean.Dynamic
+import kotlinx.android.synthetic.main.home_recommend.*
 import mvp.ljb.kt.fragment.BaseMvpFragment
+
 
 /**
  * @Author Kotlin MVP Plugin
@@ -24,29 +25,40 @@ class RecommendFragment : BaseMvpFragment<RecommendContract.IPresenter>(), Recom
     override fun registerPresenter() = RecommendPresenter::class.java
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_recommend
+        return R.layout.home_recommend
     }
 
     override fun initData() {
         super.initData()
+        swipe_refresh_layout.isRefreshing = true
+        loadData()
+    }
 
+    fun loadData(){
         val data = context?.let { getPresenter().banner(it) }
         val list = context?.let { getPresenter().list(it) }
         if (data != null) {
             if (list != null) {
                 initSongList(list,data)
+                if (swipe_refresh_layout != null) {
+                    swipe_refresh_layout.isRefreshing = false
+                }
             }
         }
     }
 
     override fun initView() {
         super.initView()
+        swipe_refresh_layout.setColorSchemeColors(-0xff6634, -0xbbbc, -0x996700, -0x559934, -0x7800)
+        //下拉刷新
+        swipe_refresh_layout.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener { loadData() })
+
     }
 
     /**
      * 初始化列表
      */
-    private fun initSongList(list: MutableList<Recommend>, data:MutableList<BannerItem>) {
+    private fun initSongList(list: MutableList<Dynamic>, data:MutableList<String>) {
         val layoutManager = LinearLayoutManager(requireContext())
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyc_item.isNestedScrollingEnabled = false
@@ -63,5 +75,7 @@ class RecommendFragment : BaseMvpFragment<RecommendContract.IPresenter>(), Recom
 
             }
         })
+
+
     }
 }
