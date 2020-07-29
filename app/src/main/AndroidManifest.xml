@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.chongai.app">
+    xmlns:tool="http://schemas.android.com/tools"
+    package="com.ch.wu.app">
 
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -31,26 +32,24 @@
         android:resizeableActivity="true"
         android:maxAspectRatio="2.4"
         android:theme="@style/AppTheme"
+        tool:ignore="LockedOrientationActivity"
         tools:targetApi="o">
         <meta-data
             android:name="android.max_aspect"
             android:value="2.4" />
-        <!--适配华为（huawei）刘海屏-->
-        <meta-data
-            android:name="android.notch_support"
-            android:value="true"/>
-        <!--适配小米（xiaomi）刘海屏-->
-        <meta-data
-            android:name="notch.config"
-            android:value="portrait|landscape" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".app.view.act.DynamicActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".app.view.act.LoginActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

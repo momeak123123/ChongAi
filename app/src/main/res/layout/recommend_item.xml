@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     app:bindLifeCircle="true"
     app:useShadowPool="true"
+    app:cardBackgroundColor="@color/white"
     app:cornerRadius="@dimen/dp_20">
 
     <RelativeLayout

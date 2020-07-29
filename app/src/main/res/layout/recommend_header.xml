@@ -9,7 +9,7 @@
     <com.zhpan.bannerview.BannerViewPager
         android:id="@+id/banner_view"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_180"
+        android:layout_height="@dimen/dp_150"
         app:bvp_indicator_style="round_rect"
         app:bvp_round_corner="@dimen/dp_20"
         app:bvp_indicator_checked_color="#71a0ff"

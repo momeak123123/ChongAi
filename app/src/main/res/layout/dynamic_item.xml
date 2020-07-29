@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dp_10"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_0_5"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:background="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_20"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/view">
 
         <com.shehuan.niv.NiceImageView
             android:id="@+id/petimg"
@@ -28,21 +41,39 @@
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/dp_10"
             android:layout_weight="1"
+            android:layout_marginEnd="@dimen/dp_10"
             android:gravity="left|center"
-            android:textSize="@dimen/sp_14"
+
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+
             android:text="名称"
+            android:textStyle="bold"
             android:textColor="@color/black"
+            android:textSize="@dimen/sp_14"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/reply"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:gravity="right|center"
+            android:text="回复"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_14"
             tools:ignore="RtlHardcoded" />
 
         <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="right|center"
             android:layout_marginEnd="@dimen/dp_20"
+            android:gravity="right|center"
             android:text="16:40"
-            android:textSize="@dimen/sp_14"
             android:textColor="@color/black_50p"
+            android:textSize="@dimen/sp_14"
             tools:ignore="RtlHardcoded" />
 
     </LinearLayout>
@@ -54,7 +85,7 @@
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginEnd="@dimen/dp_20"
         android:layout_marginStart="@dimen/dp_20"
-        android:text="狗狗是人类最好的朋友，这种友谊已经上升到一个科学高度。有专家说：当你想要缓解一下工作中的紧张压力，来吧，弯下腰来抚摸一下你脚下的宠物狗是最简单的方法。那么，在IT人理不出程序条理、创意人写不出好的策划、记者写稿思绪混乱的时候，原来我们需要的不是咖啡或者心灵鸡汤——我们真正需要的是一个伙伴。"
+        android:text="狗狗是人类最好的朋友，这种友谊已经上升到一个科学高度。"
         android:textColor="@color/black"
         android:textSize="@dimen/sp_16"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,13 +98,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_20"
         android:layout_marginTop="@dimen/dp_20"
-        app:imgGap="4dp"
+        app:imgGap="@dimen/dp_5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt"
         app:maxSize="9"
-        app:showStyle="grid"
-        app:singleImgSize="@dimen/dp_120" />
+        app:showStyle="grid" />
 
 
 
