@@ -20,112 +20,51 @@ import com.zhpan.bannerview.utils.BannerUtils
 
 class RecommendAdapter(
     val datas: MutableList<Dynamic>,
-    val context: Context,
-    val data:MutableList<String>
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    companion object {
-        const val TYPE_TITLE = 0
-        const val TYPE_SELLER = 1
-    }
+    val context: Context
+) : RecyclerView.Adapter<RecommendAdapter.InnerHolder>() {
 
     private var mItemClickListener: ItemClickListener? = null
-
-
-    override fun getItemViewType(position: Int): Int {
-        return if (position == 0) {
-            TYPE_TITLE
-        } else {
-            TYPE_SELLER
-        }
-    }
 
     /**
      * 相当于getView()
      */
-    override fun onCreateViewHolder(holder: ViewGroup, position: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(holder: ViewGroup, position: Int): InnerHolder {
         //加载View
-        return when (position) {
-            TYPE_TITLE -> TitleHolder(
-                LayoutInflater.from(context).inflate(R.layout.recommend_header, holder, false)
-            )
-            TYPE_SELLER -> SellerHolder(
-                LayoutInflater.from(context).inflate(R.layout.recommend_item, holder, false)
-            )
-            else -> TitleHolder(
-                LayoutInflater.from(context).inflate(R.layout.recommend_header, holder, false)
-            )
-        }
+        val itemView: View =
+            LayoutInflater.from(context).inflate(R.layout.home_recommend, holder, false)
+        return InnerHolder(itemView)
 
     }
 
     /**
      * 得到总条数
      */
-    override fun getItemCount(): Int {
+    override fun getItemCount(): Int = datas.size
 
-        return datas.size
+
+    class InnerHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+         var ima: NiceImageView = itemView.findViewById(R.id.ima)
+         var title: TextView = itemView.findViewById(R.id.title)
+         var petname: TextView = itemView.findViewById(R.id.petname)
+         var petimg: NiceImageView = itemView.findViewById(R.id.petimg)
+         var like: TextView = itemView.findViewById(R.id.like)
 
     }
-
 
     /**
      * 绑定数据，View和数据绑定
      */
-
-    @RequiresApi(Build.VERSION_CODES.M)
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (position < datas.size) {
-            when (getItemViewType(position)) {
-                TYPE_TITLE -> (holder as TitleHolder).bindData()
-                TYPE_SELLER -> (holder as SellerHolder).bindData(position)
-            }
-
+    @SuppressLint("SetTextI18n")
+    override fun onBindViewHolder(holder: InnerHolder, position: Int) {
+        holder.itemView.setOnClickListener { v ->
+            mItemClickListener?.onItemClick(v,position)
         }
 
-
-    }
-
-
-    inner class TitleHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var mViewPager: BannerViewPager<String, NetViewHolder> = itemView.findViewById(R.id.banner_view)
-
-        @RequiresApi(Build.VERSION_CODES.M)
-        fun bindData() {
-
-            mViewPager
-                .setAdapter(BannerAdapter())
-                .setPageMargin(context.resources.getDimension(R.dimen.dp_10).toInt())
-                .setRevealWidth(BannerUtils.dp2px(0f))
-                .setOnPageClickListener { position: Int ->
-
-                }
-                .setInterval(5000).create(data)
-            mViewPager.removeDefaultPageTransformer()
-
-        }
-
-    }
-
-    inner class SellerHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var ima: NiceImageView = itemView.findViewById(R.id.ima)
-        private var title: TextView = itemView.findViewById(R.id.title)
-        private var petname: TextView = itemView.findViewById(R.id.petname)
-        private var petimg: NiceImageView = itemView.findViewById(R.id.petimg)
-        private var like: TextView = itemView.findViewById(R.id.like)
-
-        @SuppressLint("ResourceAsColor", "SetTextI18n")
-        fun bindData(position: Int) {
-
-            itemView.setOnClickListener { v ->
-                mItemClickListener?.onItemClick(v, position)
-            }
-            Glide.with(context).load(datas[position].pet_dynamic_ima_small).placeholder(R.drawable.placeholder_big).into(ima)
-            Glide.with(context).load(datas[position].pet_imgurl).placeholder(R.drawable.placeholder).into(petimg)
-            title.text = datas[position].pet_dynamic_title
-            petname.text = datas[position].pet_name
-            like.text = datas[position].pet_dynamic_like.toString()+"赞"
-        }
+        Glide.with(context).load(datas[position].pet_dynamic_ima_small).placeholder(R.drawable.placeholder_big).into(holder.ima)
+        Glide.with(context).load(datas[position].pet_imgurl).placeholder(R.drawable.placeholder).into(holder.petimg)
+        holder.title.text = datas[position].pet_dynamic_title
+        holder.petname.text = datas[position].pet_name
+        holder.like.text = datas[position].pet_dynamic_like.toString()+"赞"
     }
 
     interface ItemClickListener {
@@ -135,5 +74,6 @@ class RecommendAdapter(
     fun setOnItemClickListener(itemClickListener: ItemClickListener) {
         this.mItemClickListener = itemClickListener
     }
+
 }
 

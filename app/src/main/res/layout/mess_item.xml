@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/dp_10"
-    android:layout_marginStart="@dimen/dp_20"
-    android:layout_marginEnd="@dimen/dp_20"
-    android:layout_marginBottom="@dimen/dp_10"
+    android:layout_marginStart="@dimen/dp_10"
+    android:layout_marginEnd="@dimen/dp_10"
+    android:layout_marginBottom="@dimen/dp_20"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -41,8 +40,8 @@
 
         <com.shehuan.niv.NiceImageView
             android:id="@+id/img"
-            android:layout_width="@dimen/dp_60"
-            android:layout_height="@dimen/dp_60"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
             android:layout_marginStart="@dimen/dp_10"
             android:src="@drawable/placeholder"
             app:is_circle="true" />
@@ -61,7 +60,7 @@
                 android:gravity="left|center"
                 android:text="有人向您咨询了问题"
                 android:textColor="@color/black"
-                android:textSize="@dimen/sp_18"
+                android:textSize="@dimen/sp_16"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:singleLine="true"

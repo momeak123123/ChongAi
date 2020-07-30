@@ -94,10 +94,9 @@ dependencies {
     implementation 'com.github.Vincent7Wong:EasyNavigation:2.0.5'
 
     //banner
-    implementation 'com.youth.banner:banner:2.1.0'
-    implementation 'com.github.zhpanvip:BannerViewPager:3.1.5'
-    implementation "androidx.viewpager2:viewpager2:1.1.0-alpha01"
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'cn.bingoogolapple:bga-banner:3.0.0@aar'
+
     //圆角
     implementation 'com.github.SheHuan:NiceImageView:1.0.5'
 
